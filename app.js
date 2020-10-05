@@ -11,9 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-  });
+
 
 app.use("/api", require("./routes/cars.js"));  
 app.use("/api", require("./routes/drivers.js"));  
@@ -23,6 +21,9 @@ const history = require('connect-history-api-fallback');
 app.use(history());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
 
 app.set('puerto', process.env.PORT || 3000);
 app.listen(app.get('puerto'), function () {
